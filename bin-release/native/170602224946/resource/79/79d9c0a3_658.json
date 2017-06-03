@@ -1,0 +1,40 @@
+{
+	"groups": [
+		{
+			"keys": "bg_jpg,timg_jpg,hero3_jpg,egret_icon_png,description_json,notify_mp3",
+			"name": "heroes"
+		}
+	],
+	"resources": [
+		{
+			"name": "bg_jpg",
+			"type": "image",
+			"url": "assets/bg.jpg"
+		},
+		{
+			"name": "egret_icon_png",
+			"type": "image",
+			"url": "assets/egret_icon.png"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "timg_jpg",
+			"type": "image",
+			"url": "assets/timg.jpg"
+		},
+		{
+			"name": "hero3_jpg",
+			"type": "image",
+			"url": "assets/hero3.jpg"
+		},
+		{
+			"name": "notify_mp3",
+			"type": "sound",
+			"url": "assets/notify.mp3"
+		}
+	]
+}
