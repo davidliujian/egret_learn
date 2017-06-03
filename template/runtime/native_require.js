@@ -11,6 +11,7 @@ var game_file_list = [
 	"polyfill/promise.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
+	"bin-debug/MyGrid.js",
 	//----auto game_file_list end----
 ];
 
@@ -49,9 +50,9 @@ egret_native.egretStart = function () {
 		contentWidth: 640,
 		contentHeight: 1136,
 		showPaintRect: true,
-		showFPS: true,
+		showFPS: false,
 		fpsStyles: "x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9",
-		showLog: true,
+		showLog: fasle,
 		logFilter: "",
 		maxTouches: 2,
 		textureScaleFactor: 1

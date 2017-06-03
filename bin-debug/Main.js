@@ -51,6 +51,161 @@ var Main = (function (_super) {
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/default.res.json", "resource/");
     };
+    //     test02   创建自己的显示对象类
+    //     private onAddToStage(event: egret.Event) {
+    //         //设置加载进度界面
+    //         //Config to load process interface
+    //         // this.loadingView = new LoadingUI();
+    //         // this.stage.addChild(this.loadingView);
+    //         var _myGrid:MyGrid = new MyGrid();
+    //         var _myGrid2:MyGrid = new MyGrid();
+    //         this.addChild( _myGrid2 );
+    //          _myGrid.x=100;
+    //           _myGrid.y=200;
+    //         this.addChild( _myGrid );
+    //    //     egret.Tween.get(_myGrid).to({x:100,y:100,scaleX:2, scaleY:2},500,egret.Ease.circIn);
+    //         console.log(_myGrid.anchorOffsetX +"   "+ _myGrid.anchorOffsetY + "   "+ _myGrid.x+"   "+_myGrid.y);
+    //         _myGrid.anchorOffsetX=50;
+    //         _myGrid.x+=50;
+    //         console.log(_myGrid.anchorOffsetX +"   "+ _myGrid.anchorOffsetY + "   "+ _myGrid.x+"   "+_myGrid.y);
+    //         egret.Tween.get(_myGrid).to({rotation:60},500,egret.Ease.circIn).to({rotation:0},500,egret.Ease.circIn);
+    //         //初始化Resource资源加载库
+    //         //initiate Resource loading library
+    //         // RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
+    //         // RES.loadConfig("resource/default.res.json", "resource/");
+    //     }
+    //test03    改变相对于舞台的位置
+    // private onAddToStage(event: egret.Event){
+    //     var container:egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
+    //     container.x = 200;
+    //     container.y =200;
+    //     this.addChild(container);
+    //     var circle:egret.Shape = new egret.Shape();
+    //     circle.graphics.beginFill(0xff0000);
+    //     circle.graphics.drawCircle(25,25,25);
+    //     circle.graphics.endFill();
+    //     container.addChild(circle);
+    //     console.log(circle.x+"  "+circle.y);
+    //     //给圆增加点击事件
+    //     circle.touchEnabled = true;
+    //     circle.addEventListener(egret.TouchEvent.TOUCH_TAP,onclick,this);
+    //     function onclick():void{
+    //         var targetPoint:egret.Point = circle.globalToLocal(0,0);
+    //         circle.x = targetPoint.x;
+    //         circle.y = targetPoint.y;
+    //         console.log(container.width  +  "   " + container.height);
+    //         console.log(circle.x+"  "+circle.y);
+    //     }
+    // }
+    //test04 通过触摸移动显示对象
+    // private onAddToStage(event: egret.Event){
+    //     // let offsetX:number;
+    //     // let offsetY:number;
+    //     // let circle:egret.Shape = new egret.Shape();
+    //     // circle.graphics.beginFill(0xff0000);
+    //     // circle.graphics.drawCircle(25,25,25);
+    //     // circle.graphics.endFill();
+    //     // this.addChild(circle);
+    //     // circle.touchEnabled = true;
+    //     // circle.addEventListener(egret.TouchEvent.TOUCH_BEGIN,startmove,this);
+    //     // circle.addEventListener(egret.TouchEvent.TOUCH_END,endmove,this);
+    //     // function startmove(e:egret.TouchEvent):void{
+    //     //     offsetX = e.stageX - circle.x;
+    //     //     offsetY = e.$stageY -circle.y;
+    //     //     this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE,move,this);
+    //     // }
+    //     // function move(e:egret.TouchEvent):void{
+    //     //     circle.x = e.stageX - offsetX;
+    //     //     circle.y = e.stageY - offsetY;
+    //     // }
+    //     // function endmove(e:egret.TouchEvent):void{
+    //     //     this.stage.removeEventListener(egret.TouchEvent.TOUCH_MOVE,move,this);
+    //     // }
+    //     //使拖动的对象始终出现在顶部
+    //     //要拖拽的对象
+    //     var draggedObject:egret.Shape;
+    //     var offsetX:number;
+    //     var offsetY:number;
+    //     //画一个红色的圆
+    //     var circle: egret.Shape = new egret.Shape();
+    //     circle.graphics.beginFill(0xff0000);
+    //     circle.graphics.drawCircle(25,25,25);
+    //     circle.graphics.endFill();
+    //     this.addChild(circle);
+    //     //画一个蓝色的正方形
+    //     var square:egret.Shape = new egret.Shape();
+    //     square.graphics.beginFill(0x0000ff);
+    //     square.graphics.drawRect(0,0,100,100);
+    //     square.graphics.endFill();
+    //     this.addChild(square);
+    //     //增加圆形的触摸监听
+    //     circle.touchEnabled = true;
+    //     circle.addEventListener(egret.TouchEvent.TOUCH_BEGIN,startMove,this);
+    //     circle.addEventListener(egret.TouchEvent.TOUCH_END,stopMove,this);
+    //     //增加正方形的触摸监听
+    //     square.touchEnabled = true;
+    //     square.addEventListener(egret.TouchEvent.TOUCH_BEGIN,startMove,this);
+    //     square.addEventListener(egret.TouchEvent.TOUCH_END,stopMove,this);
+    //     function startMove(e:egret.TouchEvent):void{
+    //         //把手指按到的对象记录下来
+    //         draggedObject = e.currentTarget;
+    //         //计算手指和要拖动的对象的距离
+    //         offsetX = e.stageX - draggedObject.x;
+    //         offsetY = e.stageY - draggedObject.y;
+    //         //把触摸的对象放在显示列表的顶层
+    //         this.addChild(draggedObject);
+    //         //手指在屏幕上移动，会触发 onMove 方法
+    //         this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE,onMove,this);
+    //     }
+    //     function stopMove(e:egret.TouchEvent) {console.log(22);
+    //         //手指离开屏幕，移除手指移动的监听
+    //         this.stage.removeEventListener(egret.TouchEvent.TOUCH_MOVE,onMove,this);
+    //     }
+    //     function onMove(e:egret.TouchEvent):void{
+    //         //通过计算手指在屏幕上的位置，计算当前对象的坐标，达到跟随手指移动的效果
+    //         draggedObject.x = e.stageX - offsetX;
+    //         draggedObject.y = e.stageY - offsetY;
+    //     }
+    // }
+    //test05 平移 scrollRect 属性是 Rectangle 类的实例，通过更改 scrollRect 属性，可以使内容左右平移或上下滚动。
+    //  private onAddToStage(event: egret.Event){
+    //      var bigText:egret.TextField = new egret.TextField();
+    //      bigText.text="平移和滚动显示对象,平移和滚动显示对象";
+    //      bigText.scrollRect = new egret.Rectangle(0,0,200,50);
+    //      bigText.cacheAsBitmap = true;
+    //      this.addChild(bigText);
+    //      console.log(bigText.width+"   "+bigText.height);
+    //      var btnLeft:egret.Shape = new egret.Shape();
+    //      btnLeft.graphics.beginFill(0xcccc01);
+    //      btnLeft.graphics.drawRect(0,0,50,50);
+    //      btnLeft.graphics.endFill();
+    //      btnLeft.x=50;
+    //      btnLeft.y=100;
+    //      this.addChild(btnLeft);
+    //      btnLeft.touchEnabled = true;
+    //      btnLeft.addEventListener(egret.TouchEvent.TOUCH_TAP,onScroll,this);
+    //      var btnRight:egret.Shape = new egret.Shape();
+    //      btnRight.graphics.beginFill(0x01cccc);
+    //      btnRight.graphics.drawRect(0,0,50,50);
+    //      btnRight.graphics.endFill();
+    //      btnRight.x=150;
+    //      btnRight.y=100;
+    //      this.addChild(btnRight);
+    //      btnRight.touchEnabled = true;
+    //      btnRight.addEventListener(egret.TouchEvent.TOUCH_TAP,onScroll,this);
+    //      function onScroll(e:egret.TouchEvent):void{
+    //          var rect:egret.Rectangle = bigText.scrollRect;
+    //          switch(e.currentTarget){
+    //              case btnLeft:
+    //                 rect.x+=20;
+    //                 break;
+    //             case btnRight:
+    //                 rect.x-=20;
+    //                 break;
+    //          }
+    //          bigText.scrollRect = rect;
+    //      }
+    // }
     /**
      * 配置文件加载完成,开始预加载preload资源组。
      * configuration file loading is completed, start to pre-load the preload resource group
@@ -139,7 +294,7 @@ var Main = (function (_super) {
         this.times = -1;
         var self = this;
         this.stage.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            switch (++self.times % 4) {
+            switch (++self.times % 5) {
                 case 0:
                     egret.Tween.get(hero2).to({ x: hero3.x, y: hero3.y }, 300, egret.Ease.circIn);
                     egret.Tween.get(hero3).to({ x: hero2.x, y: hero2.y }, 300, egret.Ease.circIn);
@@ -154,6 +309,9 @@ var Main = (function (_super) {
                     break;
                 case 3:
                     egret.Tween.get(hero3).to({ rotation: 30 }, 500, egret.Ease.circIn).to({ rotation: 0 }, 500, egret.Ease.circIn);
+                    break;
+                case 4:
+                    egret.Tween.get(hero3).to({ skewX: 10 }, 500, egret.Ease.circIn).to({ skewX: 0 }, 500, egret.Ease.circIn);
             }
         }, this);
         //常规网络通信
