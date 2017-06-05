@@ -1,4 +1,5 @@
 class MyGrid extends egret.Shape{
+//class GridSprite extends egret.Sprite //继承自Sprite,就是自定义一个容器，可以在里面添加子对象，而继承自Shape不行
     public constructor(){
         super();
         this.drawGrid();

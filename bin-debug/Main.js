@@ -41,6 +41,7 @@ var Main = (function (_super) {
         _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
         return _this;
     }
+    // //    test01
     Main.prototype.onAddToStage = function (event) {
         //设置加载进度界面
         //Config to load process interface
@@ -291,6 +292,8 @@ var Main = (function (_super) {
         hero3.x = 170;
         hero3.y = 400;
         this.addChild(hero3);
+        console.log("当前容器的子对象数量: " + this.numChildren);
+        //        this.removeChildren();    //  删除所有子对象
         this.times = -1;
         var self = this;
         this.stage.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {

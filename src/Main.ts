@@ -40,7 +40,7 @@ class Main extends egret.DisplayObjectContainer {
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
 
-    test01
+    // //    test01
     private onAddToStage(event: egret.Event) {
         //设置加载进度界面
         //Config to load process interface
@@ -322,6 +322,9 @@ class Main extends egret.DisplayObjectContainer {
         hero3.x=170;
         hero3.y=400;
         this.addChild(hero3);
+
+        console.log("当前容器的子对象数量: "+this.numChildren);
+//        this.removeChildren();    //  删除所有子对象
 
         this.times=-1;
         var self = this;

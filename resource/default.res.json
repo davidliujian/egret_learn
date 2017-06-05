@@ -3,6 +3,10 @@
 		{
 			"keys": "bg_jpg,timg_jpg,hero3_jpg,egret_icon_png,description_json,notify_mp3",
 			"name": "heroes"
+		},
+		{
+			"name": "preload",
+			"keys": "border_png"
 		}
 	],
 	"resources": [
@@ -35,6 +39,11 @@
 			"name": "notify_mp3",
 			"type": "sound",
 			"url": "assets/notify.mp3"
+		},
+		{
+			"name": "border_png",
+			"type": "image",
+			"url": "assets/border.png"
 		}
 	]
 }

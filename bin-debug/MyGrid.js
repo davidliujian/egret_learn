@@ -8,6 +8,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var MyGrid = (function (_super) {
     __extends(MyGrid, _super);
+    //class GridSprite extends egret.Sprite //继承自Sprite,就是自定义一个容器，可以在里面添加子对象，而继承自Shape不行
     function MyGrid() {
         var _this = _super.call(this) || this;
         _this.drawGrid();
