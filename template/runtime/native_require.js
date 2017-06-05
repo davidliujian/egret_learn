@@ -14,11 +14,14 @@ var game_file_list = [
 	"bin-debug/Girl.js",
 	"bin-debug/GraphicsTest.js",
 	"bin-debug/HitTest.js",
+	"bin-debug/HTTPdemo.js",
+	"bin-debug/ImgLoader.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/MyGrid.js",
 	"bin-debug/SampleDate.js",
 	"bin-debug/TextEventDemo.js",
+	"bin-debug/TouchEventTest.js",
 	//----auto game_file_list end----
 ];
 
@@ -51,7 +54,7 @@ egret_native.egretStart = function () {
     var option = {
         //以下为自动修改，请勿修改
         //----auto option start----
-		entryClassName: "SampleDate",
+		entryClassName: "HTTPdemo",
 		frameRate: 30,
 		scaleMode: "fixedWidth",
 		contentWidth: 640,
