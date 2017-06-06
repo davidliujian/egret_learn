@@ -1,0 +1,65 @@
+{
+	"groups": [
+		{
+			"keys": "bg_jpg,egret_icon_png,description_json,plane_jpg,bullet_jpg,plane2_png,bg1_png,bg2_png,shot_png,shot1_png,enemy1_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"name": "bg_jpg",
+			"type": "image",
+			"url": "assets/bg.jpg"
+		},
+		{
+			"name": "egret_icon_png",
+			"type": "image",
+			"url": "assets/egret_icon.png"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "plane_jpg",
+			"type": "image",
+			"url": "assets/plane.jpg"
+		},
+		{
+			"name": "bullet_jpg",
+			"type": "image",
+			"url": "assets/bullet.jpg"
+		},
+		{
+			"name": "plane2_png",
+			"type": "image",
+			"url": "assets/plane2.png"
+		},
+		{
+			"name": "bg1_png",
+			"type": "image",
+			"url": "assets/bg1.png"
+		},
+		{
+			"name": "bg2_png",
+			"type": "image",
+			"url": "assets/bg2.png"
+		},
+		{
+			"name": "shot_png",
+			"type": "image",
+			"url": "assets/shot.png"
+		},
+		{
+			"name": "shot1_png",
+			"type": "image",
+			"url": "assets/shot1.png"
+		},
+		{
+			"name": "enemy1_png",
+			"type": "image",
+			"url": "assets/enemy1.png"
+		}
+	]
+}
