@@ -37,8 +37,15 @@
 
     <!--这个标签会被替换为项目中所有的 javascript 文件。删除 game_files 标签后，项目文件加载列表将不会变化，请谨慎操作！-->
     <!--game_files_start-->
+	<script egret="game" src="bin-debug/BitmapTest.js"></script>
 	<script egret="game" src="bin-debug/Boy.js"></script>
 	<script egret="game" src="bin-debug/DateEvent.js"></script>
+	<script egret="game" src="bin-debug/DrawToTexture.js"></script>
+	<script egret="game" src="bin-debug/filter/BlurFilter.js"></script>
+	<script egret="game" src="bin-debug/filter/ColorMatrixFilter.js"></script>
+	<script egret="game" src="bin-debug/filter/DropShadowFilter.js"></script>
+	<script egret="game" src="bin-debug/filter/GlowFilter.js"></script>
+	<script egret="game" src="bin-debug/GeolocationTest.js"></script>
 	<script egret="game" src="bin-debug/Girl.js"></script>
 	<script egret="game" src="bin-debug/GraphicsTest.js"></script>
 	<script egret="game" src="bin-debug/HitTest.js"></script>
@@ -46,16 +53,19 @@
 	<script egret="game" src="bin-debug/ImgLoader.js"></script>
 	<script egret="game" src="bin-debug/LoadingUI.js"></script>
 	<script egret="game" src="bin-debug/Main.js"></script>
+	<script egret="game" src="bin-debug/multiMedia/SoundTest.js"></script>
 	<script egret="game" src="bin-debug/MyGrid.js"></script>
 	<script egret="game" src="bin-debug/SampleDate.js"></script>
 	<script egret="game" src="bin-debug/TextEventDemo.js"></script>
+	<script egret="game" src="bin-debug/timeControl/StartTickerTest.js"></script>
+	<script egret="game" src="bin-debug/timeControl/TimerDemo.js"></script>
 	<script egret="game" src="bin-debug/TouchEventTest.js"></script>
 	<!--game_files_end-->
 </head>
 <body>
 
     <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
-         data-entry-class="HTTPdemo"        //项目入口
+         data-entry-class="GeolocationTest"        //项目入口
          data-orientation="auto"        //旋转模式
          data-scale-mode="fixedWidth"      //缩放模式
          data-frame-rate="30"           //运行的帧率

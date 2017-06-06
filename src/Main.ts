@@ -122,7 +122,7 @@ class Main extends egret.DisplayObjectContainer {
 
     //     // function startmove(e:egret.TouchEvent):void{
     //     //     offsetX = e.stageX - circle.x;
-    //     //     offsetY = e.$stageY -circle.y;
+    //     //     offsetY = e.stageY -circle.y;
     //     //     this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE,move,this);
     //     // }
 

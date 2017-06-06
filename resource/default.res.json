@@ -6,7 +6,7 @@
 		},
 		{
 			"name": "preload",
-			"keys": "border_png"
+			"keys": "border_png,egret_icon_png,run_png,bird-yellow_png,pig-green_png,ColorMatrix_png,hero4_png,star_png,bird-white_png,bird-black_png,bird-red_png"
 		}
 	],
 	"resources": [
@@ -44,6 +44,51 @@
 			"name": "border_png",
 			"type": "image",
 			"url": "assets/border.png"
+		},
+		{
+			"name": "run_png",
+			"type": "image",
+			"url": "assets/run.png"
+		},
+		{
+			"name": "bird-yellow_png",
+			"type": "image",
+			"url": "assets/bird-yellow.png"
+		},
+		{
+			"name": "pig-green_png",
+			"type": "image",
+			"url": "assets/pig-green.png"
+		},
+		{
+			"name": "ColorMatrix_png",
+			"type": "image",
+			"url": "assets/ColorMatrix.png"
+		},
+		{
+			"name": "hero4_png",
+			"type": "image",
+			"url": "assets/hero4.png"
+		},
+		{
+			"name": "star_png",
+			"type": "image",
+			"url": "assets/star.png"
+		},
+		{
+			"name": "bird-white_png",
+			"type": "image",
+			"url": "assets/bird-white.png"
+		},
+		{
+			"name": "bird-black_png",
+			"type": "image",
+			"url": "assets/bird-black.png"
+		},
+		{
+			"name": "bird-red_png",
+			"type": "image",
+			"url": "assets/bird-red.png"
 		}
 	]
 }

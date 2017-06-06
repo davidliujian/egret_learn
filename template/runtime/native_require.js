@@ -9,8 +9,15 @@ var game_file_list = [
 	"libs/modules/tween/tween.js",
 	"libs/modules/socket/socket.js",
 	"polyfill/promise.js",
+	"bin-debug/BitmapTest.js",
 	"bin-debug/Boy.js",
 	"bin-debug/DateEvent.js",
+	"bin-debug/DrawToTexture.js",
+	"bin-debug/filter/BlurFilter.js",
+	"bin-debug/filter/ColorMatrixFilter.js",
+	"bin-debug/filter/DropShadowFilter.js",
+	"bin-debug/filter/GlowFilter.js",
+	"bin-debug/GeolocationTest.js",
 	"bin-debug/Girl.js",
 	"bin-debug/GraphicsTest.js",
 	"bin-debug/HitTest.js",
@@ -18,9 +25,12 @@ var game_file_list = [
 	"bin-debug/ImgLoader.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
+	"bin-debug/multiMedia/SoundTest.js",
 	"bin-debug/MyGrid.js",
 	"bin-debug/SampleDate.js",
 	"bin-debug/TextEventDemo.js",
+	"bin-debug/timeControl/StartTickerTest.js",
+	"bin-debug/timeControl/TimerDemo.js",
 	"bin-debug/TouchEventTest.js",
 	//----auto game_file_list end----
 ];
@@ -54,7 +64,7 @@ egret_native.egretStart = function () {
     var option = {
         //以下为自动修改，请勿修改
         //----auto option start----
-		entryClassName: "HTTPdemo",
+		entryClassName: "GeolocationTest",
 		frameRate: 30,
 		scaleMode: "fixedWidth",
 		contentWidth: 640,

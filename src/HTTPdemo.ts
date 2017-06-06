@@ -63,16 +63,16 @@ class HTTPdemo extends egret.DisplayObjectContainer{
             var  request:egret.HttpRequest = new egret.HttpRequest();
             request.responseType = egret.HttpResponseType.ARRAY_BUFFER;
             var respHandler = function( evt:egret.Event ):void {
-            switch ( evt.type ){
-                case egret.Event.COMPLETE:
-                    var request:egret.HttpRequest = evt.currentTarget;
-                    var ab:ArrayBuffer = request.response;
-                    console.log( "respHandler:n", ab.byteLength );
-                    break;
-                case egret.IOErrorEvent.IO_ERROR:
-                    console.log( "respHandler io error" );
-                    break;
-            }
+                switch ( evt.type ){
+                    case egret.Event.COMPLETE:
+                        var request:egret.HttpRequest = evt.currentTarget;
+                        var ab:ArrayBuffer = request.response;
+                        console.log( "respHandler:n", ab.byteLength );
+                        break;
+                    case egret.IOErrorEvent.IO_ERROR:
+                        console.log( "respHandler io error" );
+                        break;
+                }
             }
             request.once( egret.Event.COMPLETE, respHandler, null);
             request.once( egret.IOErrorEvent.IO_ERROR, respHandler, null);
