@@ -94,14 +94,16 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
+        //添加背景****************************************************
         let sky = this.createBitmapByName("bg1_png");
         this.addChild(sky);
         let stageW = this.stage.stageWidth;
         let stageH = this.stage.stageHeight;
         sky.width = stageW;
         sky.height = stageH;
-
-
+        //****************************************************添加背景
+        
+        //我方的飞机**************************************************        
         this.icon = this.createBitmapByName("plane2_png");
         this.addChild(this.icon);
         this.icon.anchorOffsetX = this.icon.width/2;
@@ -113,11 +115,14 @@ class Main extends egret.DisplayObjectContainer {
         this.icon.touchEnabled =true;
         this.icon.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.startMove,this);
         this.icon.addEventListener(egret.TouchEvent.TOUCH_END,this.stopMove,this);
-        
+        //**************************************************我方的飞机        
+
+
+        //子弹**************************************************        
         this.bullets = new Array<Bullet>();
 
         var bullet = new Bullet();
-         bullet.texture = RES.getRes("shot1_png");
+        bullet.texture = RES.getRes("shot1_png");
         this.addChild(bullet);
         this.bullets.push(bullet);
 
@@ -126,45 +131,51 @@ class Main extends egret.DisplayObjectContainer {
         bullet.y = this.icon.y-75;
         console.log("bullet.x:"+bullet.x + "    bullet.y:"+bullet.y +"  bullet.width:"+bullet.width);
 
-        this.addEventListener( egret.Event.ENTER_FRAME, ()=>{
-                var bullet = new Bullet();
-                bullet.texture= RES.getRes("shot1_png");
-                this.addChild(bullet);
-                this.bullets.push(bullet);
-                bullet.x =this.icon.x-15;
-                bullet.y = this.icon.y-75;
+        this.addEventListener( egret.Event.ENTER_FRAME, this.bulletAdd, this );
+        //**************************************************子弹
 
-            for( var i:number = this.bullets.length - 1; i > -1; --i ){
-                var bullet:Bullet = this.bullets[i]; 
-                var yTo:number =  bullet.y - bullet.speed;
 
-                if( yTo < 0){
-                    this.removeChild(this.bullets[i]);
-                    this.bullets.splice(i,1);
-                }   
-                bullet.y = yTo;
-            }
-        }, this );
-
-        //敌机
+        //敌机**************************************************
         this.enemys = new Array<Enemy>();
         var timer:egret.Timer = new egret.Timer(100);
-        //public Timer( delay:number,repeatCount:number )
         //注册事件侦听器
         timer.addEventListener(egret.TimerEvent.TIMER,this.timerFunc,this);
         //开始计时
         timer.start();
-        
-
-
+        //**************************************************敌机
     }
 
+    private bulletAdd(){
+        var bullet = new Bullet();
+        bullet.texture= RES.getRes("shot1_png");
+        this.addChild(bullet);
+        this.bullets.push(bullet);
+        bullet.x =this.icon.x-1
+        bullet.y = this.icon.y-75;
+
+        //子弹是否超出舞台范围，超出就删除
+        for( var i:number = this.bullets.length - 1; i > -1; --i ){
+            var bullet:Bullet = this.bullets[i]; 
+            var yTo:number =  bullet.y - bullet.speed
+            if( yTo < 0){
+                this.removeChild(this.bullets[i]);
+                this.bullets.splice(i,1);
+            }   
+            bullet.y = yTo;
+        }
+    }
+
+
+
+    //添加敌机
     private timerFunc(e:egret.Event)
     {
         var timer:egret.Timer =e.target;
         if(timer.currentCount % 5== 0 && timer.currentCount<=150){
             var enemy = new Enemy();
             enemy.texture= RES.getRes("enemy1_png");
+            enemy.anchorOffsetX = enemy.width/2;
+            enemy.anchorOffsetY = enemy.height/2;
             this.addChild(enemy);
             this.enemys.push(enemy);
             enemy.x =Math.random() * this.stage.stageWidth;
@@ -177,7 +188,7 @@ class Main extends egret.DisplayObjectContainer {
             console.log("计时"+timer.currentCount);
         }
         
-
+        //敌机是否超出舞台范围，超出就删除
         for( var i:number = this.enemys.length - 1; i > -1; --i ){
                 var enemy:Enemy = this.enemys[i]; 
                 var yTo:number =  enemy.y + enemy.speed;
@@ -189,7 +200,76 @@ class Main extends egret.DisplayObjectContainer {
                 enemy.y = yTo;
         }
 
+        this.hit(timer); //碰撞
+        console.log(this.enemys.length+"    敌机数量"+timer.currentCount +"    次数");
+        if(timer.currentCount > 150 && this.enemys.length == 0){
+            this.removeEventListener( egret.Event.ENTER_FRAME, this.bulletAdd, this );
+            // for(var i:number = this.bullets.length;i>-1;--i){
+            //     this.removeChild(this.bullets[i]);
+            // }
+            timer.removeEventListener(egret.TimerEvent.TIMER,this.timerFunc,this);
+            this.bullets.length=0;
+            this.addChild(this.createGameOver());
+        }
     }
+
+    //是否碰撞
+    private hit(timer:egret.Timer){
+        for(var i=0;i<this.bullets.length;i++){
+            var bullet = this.bullets[i];
+            for(var j=0;j<this.enemys.length;j++){
+                var enemy = this.enemys[j];
+                var flag = this.hitTest(enemy,bullet) || this.hitTest(enemy,this.icon);
+                if(flag){
+                    if(this.hitTest(enemy,this.icon)){  //如果是我方飞机与敌机相撞
+                        this.removeChild(this.icon);
+                        this.removeEventListener( egret.Event.ENTER_FRAME, this.bulletAdd, this );
+                        timer.removeEventListener(egret.TimerEvent.TIMER,this.timerFunc,this);
+                        this.bullets.length=0;
+                        this.addChild(this.createGameOver());
+                    }
+                    this.removeChild(bullet);
+                    this.removeChild(enemy);
+                    this.enemys.splice(j,1);
+                    this.bullets.splice(i,1);
+                    this.bomb(enemy);
+                   
+                }
+            }
+        }
+    }
+
+    //碰撞效果图的添加与删除
+    private bomb(enemy:Enemy){
+        var bomb = this.createBitmapByName("bomb_png");
+        bomb.x = enemy.x;
+        bomb.y = enemy.y;
+        bomb.anchorOffsetX = bomb.width/2;
+        bomb.anchorOffsetY = bomb.height/2;
+        this.addChild(bomb);
+
+        var timer1:egret.Timer = new egret.Timer(500,1);
+                    timer1.addEventListener(egret.TimerEvent.TIMER,()=>{
+                        this.removeChild(bomb);
+                    },this);
+        timer1.start();
+    }
+
+    //是否碰撞工具类
+    private hitTest(obj1:egret.DisplayObject,obj2:egret.DisplayObject){
+        var isHit:boolean = obj1.hitTestPoint( obj2.x, obj2.y );
+        return isHit;
+    }
+    // private hitTest(obj1:egret.DisplayObject,obj2:egret.DisplayObject):boolean{
+
+    //         var rect1:egret.Rectangle = obj1.getBounds();
+    //         var rect2:egret.Rectangle = obj2.getBounds();
+    //         rect1.x = obj1.x;
+    //         rect1.y = obj1.y;
+    //         rect2.x = obj2.x;
+    //         rect2.y = obj2.y;
+    //         return rect1.intersects(rect2);
+    // }
 
     private startMove(e:egret.TouchEvent){
         //把手指按到的对象记录下来
@@ -227,6 +307,16 @@ class Main extends egret.DisplayObjectContainer {
         return result;
     }
 
+    private createGameOver():egret.TextField{
+        var label:egret.TextField = new egret.TextField(); 
+        label.text = "游戏结束！"; 
+
+        label.x= this.stage.stageWidth/2;
+        label.y= this.stage.stageHeight/2;
+        label.anchorOffsetX = label.width/2;
+        label.anchorOffsetY= label.height/2;
+        return label;
+    }
     
 }
 
